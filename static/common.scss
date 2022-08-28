@@ -1,0 +1,59 @@
+.uni-numbox {
+		display: flex;
+		margin-top: 20rpx;
+		justify-content: flex-start;
+		align-items: center;
+		width:250rpx !important;
+		height: 50upx;
+		/* background:#f5f5f5; */
+	}
+
+	.uni-numbox__minus,
+	.uni-numbox__plus {
+		margin: 0;
+		/* background-color: #f5f5f5; */
+		width: 70rpx;
+		height: 70rpx;
+		line-height: 50upx;
+		text-align: center;
+		position: relative;
+		/* border: 1px solid #f5f5f5; */
+		/* border-radius: 50%; */
+		font-size: 30upx;
+	}
+	.uni-numbox__minus .yticon,
+	.uni-numbox__plus .yticon{
+		font-size: 36upx;
+		color: #555;
+	}
+
+	.uni-numbox__minus {
+  border: 1px solid crimson !important;
+  background-color: #ffffff !important;
+   .uni-numbox--text{
+	   color: crimson !important; 
+	   font-weight: bold !important;
+   }
+	}
+
+	.uni-numbox__plus {
+	 background-color: crimson !important; 
+	 .uni-numbox--text{
+	 color: #ffffff !important;
+	 font-weight: bold !important;
+	 }
+	}
+
+	.uni-numbox__value {
+		position: relative;
+		background-color: #ffffff  !important;
+		width: 90rpx;
+		height: 50rpx;
+		text-align: center;
+		padding: 0;
+		font-size: 30px;
+	}
+
+	.uni-numbox-disabled.yticon {
+		color: #d6d6d6;
+	}
