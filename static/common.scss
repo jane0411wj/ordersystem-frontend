@@ -57,3 +57,19 @@
 	.uni-numbox-disabled.yticon {
 		color: #d6d6d6;
 	}
+.order_num{
+	.uni-numbox{
+		margin-top: 0;
+	}
+	.uni-numbox__minus, .uni-numbox__plus{
+		width: 40rpx;
+		height: 40rpx;
+	}
+	.uni-numbox{
+		width: auto !important;
+	}
+	.uni-numbox__value{
+		width: 70rpx !important;
+		margin: 0;
+	}
+}

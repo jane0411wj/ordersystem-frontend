@@ -1,80 +1,123 @@
 <template>
 	<view>
-		<uni-popup ref="popup" background-color="#fff" @change="change" :mask-click="false">
+		<uni-popup ref="popup" background-color="#fff" :mask-click="false" class='add_p_pop'>
 			<uni-popup-dialog mode="input" message="成功消息" confirmText="Order" cancelText="Back" title="加入购物车"
 				:duration="2000" :before-close="true" @close="close" @confirm="confirm">
-				<view class="dialog_body">
+				<view class="dialog_body" v-if="data">
 					<view class="top">
 						<view class="goods_info">
-							<view class="name">精品红烧肉</view>
+							<view class="name">{{data?data.name:''}}</view>
 							<view class="desc">
-								精品红烧肉精品红烧肉精品红烧肉精品红烧肉精品红烧肉
+								{{data.description}}
 							</view>
 						</view>
 						<view class="price">
 							<text class="uint">$</text>
-							<text class="num">150.22</text>
+							<text class="num">{{data.unitPrice}}</text>
 						</view>
 					</view>
 					<view class="remark_box">
-						<uni-data-select @change="selectTypeChange" :localdata="range" placeholder="请选择月份"
-							v-model="editSelectTypeLists"></uni-data-select>
+						<uni-data-select @change="selectTypeChange" :localdata="markList" placeholder="请选择备注"
+							v-model="markId"></uni-data-select>
 					</view>
 					<view class="add_box">
-						<uni-number-box :min="1" :value="dataNumber" :isMin="true" :index="1"
-							@eventChange="numberChange"></uni-number-box>
+						<uni-number-box :min="1" :value="dataNumber" :isMin="true" :index="1" @change="numberChange">
+						</uni-number-box>
 					</view>
 					<view class="total_price">
-						总价:<text class="total_num">1200</text>
+						总价:<text class="total_num">SGD {{totalPrice}}</text>
 					</view>
 				</view>
 			</uni-popup-dialog>
 		</uni-popup>
 		<!-- 提示信息弹窗 -->
 		<uni-popup ref="message" type="message">
-			<uni-popup-message :type="msgType" message="Please confirm your order at the top right corner." :duration="2000"></uni-popup-message>
+			<uni-popup-message type="msgType" message="Please confirm your order at the top right corner."
+				:duration="2000"></uni-popup-message>
 		</uni-popup>
 	</view>
 </template>
 
 <script>
 	export default {
-	
+		props: {
+			data: {
+				type: Object,
+				default: {},
+			}
+		},
 		name: "add_cat_dialog",
+		computed: {
+			totalPrice() {
+				return this.data.unitPrice * this.dataNumber
+			}
+		},
+
 		data() {
 			return {
 				dataNumber: 1,
-				editSelectTypeLists: '',
-				range: [{
-						value: 0,
-						text: "篮球"
-					},
-					{
-						value: 1,
-						text: "足球"
-					},
-					{
-						value: 2,
-						text: "游泳"
-					},
-				],
+				markId: '',
+				markList: [],
 			};
 		},
 		created() {},
+		mounted() {
+			this.getRemarks()
+		},
 		methods: {
 			close() {
-				this.$refs.popup.close()
+				this.$refs && this.$refs.popup.close()
 			},
 			confirm() {
-				this.$refs.message.open();
-				// this.$refs.popup.close()
+				this.addCart()
 			},
 			selectTypeChange(e) {
 				console.log("index：" + e)
+				this.markId = e;
 			},
 			numberChange(data) {
-				this.dataNumber = data.number;
+				this.dataNumber = data;
 			},
+			async addCart() {
+				uni.showLoading({
+					title: '数据加载中'
+				})
+				var params = {
+					"productId": this.data ? this.data.id : '',
+					"stock": this.dataNumber,
+					"status": "NOT_PURCHASED",
+					'checkinOtp': 123456,
+					
+				}
+				if(this.markId)
+				{
+					params={...params,	'remarkId': this.markId}
+				}
+				const {
+					data: res
+				} = await uni.$http.post('/shoppingCart', params)
+				if (res) {
+					uni.hideLoading();
+					this.$store.dispatch('getShopList');
+					this.$refs.popup.close()
+					this.$refs && this.$refs.message.open();
+				}
+
+			},
+			async getRemarks() {
+				const {
+					data: res
+				} = await uni.$http.get('/remarks/5')
+				if (res) {
+					this.markList = res.map((e) => {
+						return {
+							...e,
+							value: e.id,
+							text: e.remark
+						}
+					})
+				}
+			}
 		}
 	}
 </script>
@@ -97,9 +140,11 @@
 		}
 	}
 
-	.dialog_body {}
+	.dialog_body {
+		width: 100%;
+	}
 
-	::v-deep.uni-popup .uni-popup__wrapper {
+	 .add_p_pop ::v-deep.uni-popup .uni-popup__wrapper {
 		width: 600rpx !important;
 
 		.uni-popup-dialog {
@@ -158,7 +203,7 @@
 		border-bottom: 1rpx solid #cccccc;
 	}
 
-	
+
 
 	.total_price {
 		text-align: right;

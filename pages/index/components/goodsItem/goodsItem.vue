@@ -4,22 +4,28 @@
 			<image src="../../../../static/images/meishi.jpg" class="img"></image>
 			<view class="goods_info">
 				<view class="goods_name">
-					精品红烧肉
+					{{data.name}}
 				</view>
 				<view class="desc">
-					精品红烧肉精品红烧肉精品红烧肉精品红烧肉精品红烧肉,精品红烧肉
+					{{data.description}}
 				</view>
 			</view>
 		</view>
 		<view class="price">
-			<text class="uint">$</text>
-			<text class="num">150.22</text>
+			<text class="uint">SGD</text>
+			<text class="num">{{data.unitPrice}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		props: {
+			data: {
+				type: Object,
+				default: {},
+			}
+		},
 		data() {
 			return {
 
@@ -43,6 +49,7 @@
 		}
 		.goods_box{
 			display: flex;
+			width: 650rpx;
 			.goods_info{
 				padding-left: 15rpx;
 				flex: 1;
@@ -58,17 +65,16 @@
 		}
 		.price{
 			text-align: right;
-			font-size: 32rpx;
 			color: #f12f0d;
-			.unit{
-				font-size: 32rpx;
-				display: inline-block;
-			}
 			.num{
 				padding-left: 6rpx;
 				font-size: 32rpx;
 				font-weight: bold;
 			}
+		}
+		.unit{
+			font-size: 20rpx;
+			display: inline-block;
 		}
 	}
 </style>
