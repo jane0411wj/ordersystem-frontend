@@ -6,7 +6,7 @@
 				<view class="shopName">Westlake 西湖小吃</view>
 			</view>
 			<view class="shopCart" @click="goShopCartList">
-				<view class="product_num" v-if="shopCartList.length>0">{{shopCartList.length}}</view>
+				<view class="product_num" v-if="shopCartList.length>0"></view>
 				 <image src="../static/images/gouwuche.png"></image>
 			</view>
 		</view>
@@ -66,7 +66,8 @@
 		position: relative;
 		.product_num{
 			position: absolute;
-			padding: 0rpx 15rpx;
+			width: 5px;
+			height: 5px;
 			color: white;
 			font-size: 10rpx;
 			border-radius: 50%;

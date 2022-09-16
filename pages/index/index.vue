@@ -3,6 +3,16 @@
 		<topBar></topBar>
 		<view class="center_page">
 			<template v-if="barIndex==1">
+				<view class="type">
+				<view class="t_name">
+					菜单种类:
+				</view>	
+				<view class="select">
+					
+				<uni-data-select  @change="selectList" :localdata="markList" placeholder="请选择备注"
+					v-model="selectValue"></uni-data-select>
+					</view>
+					</view>
 				<template v-if="dataList.length>0">
 					<goods-item @click.native="toggle(data)" v-for="(data,index) in dataList" :key="index" :data='data'>
 					</goods-item>
@@ -46,7 +56,11 @@
 				barIndex: 1,
 				dataList: [],
 				handleData: null,
-				orderList: []
+				orderList: [],
+				selectValue:'',
+				selecList:[ { value: 0, text: "篮球" },
+        { value: 1, text: "足球" },
+        { value: 2, text: "游泳" },]
 			}
 		},
 		mounted() {
@@ -118,7 +132,19 @@
 
 <style lang="scss" scoped>
 	@import url("@/static/main.scss");
-
+.type{
+	display: flex;
+	align-items: center;
+	margin-bottom: 20rpx;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 20rpx;
+	.t_name{
+		margin-right: 20rpx;
+	}
+	.select{
+		width: 400rpx;
+	}
+}
 	.container {
 		width: 750rpx;
 		box-sizing: border-box;
