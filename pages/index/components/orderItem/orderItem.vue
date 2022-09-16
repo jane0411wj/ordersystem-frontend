@@ -3,7 +3,7 @@
 		<view class="goods_info">
 			<view class="goods_top">
 				<view class="goods_name">{{data.product.name}}</view>
-				<view class="order_num"><text>{{data.stock}}</text>份</view>
+				<view class="order_num">Qty:<text>{{data.stock}}</text></view>
 			</view>
 			<view class="price">
 				<text class="uint">SGD</text>
@@ -86,7 +86,7 @@
 		}
 
 		.desc {
-			width: 600rpx;
+			// width: 600rpx;
 		}
 	}
 
@@ -127,7 +127,7 @@
 
 
 		.goods_info {
-			padding-left: 15rpx;
+			// padding-left: 15rpx;
 			flex: 1;
 		}
 

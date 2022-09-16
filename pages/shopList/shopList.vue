@@ -104,7 +104,7 @@
 					console.log(this.shopCartList.length);
 					if (this.shopCartList.length==0) {
 						uni.showToast({
-							title: '购物车暂无可购买的商品',
+							title: 'No food in the cart',
 							icon: 'none',
 							duration: 850
 						});

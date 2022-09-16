@@ -1,6 +1,6 @@
 <template>
 	<view class="nodata">
-		暂无数据
+		No food in the cart
 	</view>
 </template>
 

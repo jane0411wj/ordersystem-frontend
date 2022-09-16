@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<uni-popup ref="popup" background-color="#fff" :mask-click="false" class='add_p_pop'>
-			<uni-popup-dialog mode="input" message="成功消息" confirmText="Order" cancelText="Back" title="加入购物车"
+			<uni-popup-dialog mode="input" message="成功消息" confirmText="Order" cancelText="Back" title="Add to cart"
 				:duration="2000" :before-close="true" @close="close" @confirm="confirm">
 				<view class="dialog_body" v-if="data">
 					<view class="top">
@@ -13,7 +13,7 @@
 						</view>
 						<view class="price">
 							<text class="uint">$</text>
-							<text class="num">{{data.unitPrice}}</text>
+							<text class="num">{{confirmNum(data.unitPrice)}}</text>
 						</view>
 					</view>
 					<view class="remark_box">
@@ -25,7 +25,7 @@
 						</uni-number-box>
 					</view>
 					<view class="total_price">
-						总价:<text class="total_num">SGD {{totalPrice}}</text>
+						总价:<text class="total_num">SGD {{confirmNum(totalPrice)}}</text>
 					</view>
 				</view>
 			</uni-popup-dialog>
@@ -65,7 +65,13 @@
 			this.getRemarks()
 		},
 		methods: {
+			resetData()
+			{
+				this.dataNumber=1;
+				this.markId=''
+			},
 			close() {
+				this.resetData();
 				this.$refs && this.$refs.popup.close()
 			},
 			confirm() {
@@ -99,6 +105,7 @@
 				if (res) {
 					uni.hideLoading();
 					this.$store.dispatch('getShopList');
+					this.resetData();
 					this.$refs.popup.close()
 					this.$refs && this.$refs.message.open();
 				}

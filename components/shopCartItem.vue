@@ -14,7 +14,7 @@
 				</view>
 				<view class="price">
 					<text class="uint" style="font-size: 30rpx;">SGD</text>
-					<text class="num">{{data.stock*data.product.unitPrice}}</text>
+					<text class="num">{{ confirmNum(data.stock*data.product.unitPrice)}}</text>
 				</view>
 			</view>
 			</view>

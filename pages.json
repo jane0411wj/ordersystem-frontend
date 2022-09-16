@@ -1,4 +1,7 @@
 {
+	"easycom": {
+	    "^lp-(.*)": "uni-multiple-select/components/lp-$1/index.vue"
+	  },
 	"pages": [{
 		"path": "pages/index/index",
 		"style": {

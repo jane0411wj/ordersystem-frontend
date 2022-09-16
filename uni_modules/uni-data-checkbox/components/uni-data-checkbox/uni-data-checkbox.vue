@@ -124,7 +124,7 @@
 			},
 			emptyText:{
 				type: String,
-				default: '暂无数据'
+				default: 'No food in the cart'
 			},
 			disabled:{
 				type: Boolean,

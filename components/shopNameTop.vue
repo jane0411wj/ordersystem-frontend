@@ -2,8 +2,8 @@
 	<view class="top_bar">
 		<view class="info">
 			<view class="shop_about">
-				<image src="../static/images/logo.png" ></image>
-				<view class="shopName">豪客来餐厅</view>
+				<image src="../static/images/shopName.png" ></image>
+				<view class="shopName">Westlake 西湖小吃</view>
 			</view>
 			<view class="shopCart" @click="goShopCartList">
 				<view class="product_num" v-if="shopCartList.length>0">{{shopCartList.length}}</view>

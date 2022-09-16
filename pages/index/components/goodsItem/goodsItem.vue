@@ -13,12 +13,13 @@
 		</view>
 		<view class="price">
 			<text class="uint">SGD</text>
-			<text class="num">{{data.unitPrice}}</text>
+			<text class="num">{{confirmNum(data.unitPrice)}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
+	import '../../../../common.js'
 	export default {
 		props: {
 			data: {
@@ -32,7 +33,7 @@
 			}
 		},
 		methods: {
-
+           
 		}
 	}
 </script>
@@ -43,6 +44,7 @@
 		padding-bottom: 20rpx;
 		padding-top: 20rpx;
 		border-bottom: 1rpx solid #cccccc;
+		justify-content: space-between;
 		.img {
 			width: 200rpx;
 			height: 170rpx;
@@ -51,7 +53,7 @@
 			display: flex;
 			width: 650rpx;
 			.goods_info{
-				padding-left: 15rpx;
+				padding-left: 30rpx;
 				flex: 1;
 			}
 			.goods_name{
@@ -68,7 +70,7 @@
 			color: #f12f0d;
 			.num{
 				padding-left: 6rpx;
-				font-size: 32rpx;
+				font-size: 28rpx;
 				font-weight: bold;
 			}
 		}

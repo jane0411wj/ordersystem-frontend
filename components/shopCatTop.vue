@@ -2,7 +2,7 @@
 	<view class="top_bar">
 		<view class="info">
 			<view class="shop_about">
-				<image src="../static/images/logo.png" ></image>
+				<image src="../static/images/shopName.png" ></image>
 				<view class="shopName">CONFIRM ORDER
 </view>
 			</view>
