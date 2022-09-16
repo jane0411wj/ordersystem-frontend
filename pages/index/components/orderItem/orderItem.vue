@@ -7,7 +7,7 @@
 			</view>
 			<view class="price">
 				<text class="uint">SGD</text>
-				<text class="num">{{data.product.unitPrice}}</text>
+				<text class="num">{{confirmNum(data.product.unitPrice)}}</text>
 			</view>
 		</view>
 		<view class="goods_bottom">
@@ -152,7 +152,7 @@
 
 		.num {
 			padding-left: 6rpx;
-			font-size: 32rpx;
+			font-size: 28rpx;
 			font-weight: bold;
 		}
 	}

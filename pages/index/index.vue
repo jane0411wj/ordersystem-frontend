@@ -27,7 +27,6 @@
 		</view>
 		<bottom-bar @barClick="barClick"></bottom-bar>
 		<addCartDialog ref="dialog" :data="handleData"></addCartDialog>
-<view>sdff</view>
 	</view>
 </template>
 
