@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "customicons"; /* Project id 2878519 */
+  src:url('/static/customicons.ttf') format('truetype');
+}
+body,html{
+	font-size: 28rpx;
+	color: #333333;
+	line-height:1.5 ;
+}
+*{
+	box-sizing: border-box;
+}
+.customicons {
+  font-family: "customicons" !important;
+}
+
+.youxi:before {
+  content: "\e60e";
+}
+
+.wenjian:before {
+  content: "\e60f";
+}
+
+.zhuanfa:before {
+  content: "\e610";
+}

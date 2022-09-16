@@ -1,0 +1,22 @@
+.mainPage{
+		position: relative;
+	  	width: 100vw;
+	  	height: 100vh;
+		display: flex;
+		flex-direction: column;
+	     justify-content: space-between;
+		 overflow: hidden;
+
+}
+		.bottom{
+			height: 100rpx;
+		}
+		.center_page{
+ 
+	            flex: 1;
+			   position: relative;
+			  overflow: auto;
+		}
+		.center_page{
+			padding: 40rpx 25rpx;
+		}
